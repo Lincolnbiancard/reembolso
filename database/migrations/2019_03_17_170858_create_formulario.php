@@ -6,14 +6,10 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateFormulario extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
-        Schema::create('formulario', function (Blueprint $table) {
+        Schema::create('formularios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('cliente');
             $table->timestamp('data');
@@ -23,13 +19,8 @@ class CreateFormulario extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists('formulario');
+        Schema::dropIfExists('formularios');
     }
 }
