@@ -19,4 +19,6 @@ Route::get('/', function () {
     return view('reembolso');
 });
 
+Route::get('/listagem', 'FormularioController@index');
+
 

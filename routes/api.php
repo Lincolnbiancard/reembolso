@@ -19,6 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::namespace('API')->name('api.')->group(function(){
     
-    Route::resource('/formulario', 'FormularioController');
+    Route::get('/formulario', 'FormularioController@formularioFunction');
     Route::resource('/despesas', 'DespesasController');
+    Route::get('/listagem', 'FormularioController@index');
+    Route::post('/adiciona', 'FormularioController@store');
+    
 });
