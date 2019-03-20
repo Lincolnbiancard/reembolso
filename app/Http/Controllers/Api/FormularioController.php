@@ -33,13 +33,14 @@ class FormularioController extends Controller
     //CRIAR UM NOVO REGISTRO
     public function store(Request $request)
     {
+        // dd($request->all());
         Formulario::create($request->all()); 
         return redirect('/api/formulario');
     }
 
 
-    //Adicionar um novo reembolso 
-    public function formularioFunction(Request $request) {
+    //Formulario de cadastro
+    public function formularioCadastro() {
         $data = $this->despesa->all();
         return view('formulario')->with('despesa', Despesa::all());
     }
@@ -54,22 +55,37 @@ class FormularioController extends Controller
     }
 
 
-    //ATUALIZA O USUARIO PASSANDO O ID 
+    //ATUALIZA PASSANDO O ID 
     public function update(Request $request, $id)
     {
-        $formularioData = $request->all();
-        $formulario = $this->formulario->find($id);
-        $formulario->update($formularioData);
+            $formularioData = $request->all();
+            $formulario = $this->formulario->find($id);
+            $formulario->update($formularioData);
 
         return 'Dados atualizado com sucesso!';
     }
 
+    //Formulario de atualização
+    public function formularioAtualiza($id) {
+        // $data = $this->formulario->find($id); //Trazer a lista de despesas no lookup
+        $data['formulario'] = Formulario::find($id);
+        $data['despesas'] = Despesa::all();
+        return view('atualizaFormulario', $data);
+    }
+
   
-    //REMOVE REGISTRO
+    //REMOVER REGISTRO
     public function destroy($id)
     {
-        Formulario::destroy($id);
+        $formulario = $this->formulario->find($id);
+        $formulario->delete();
 
-        return 'Dados removido com sucesso!'; 
+        return redirect('api/listagem'); 
+    }
+
+    //teste
+    public function teste()
+    {
+        return redirect('teste'); 
     }
 }

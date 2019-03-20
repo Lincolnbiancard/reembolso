@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Table</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="/css/padrao.css">
-		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-</head>
-<body>
+@extends('principal')
+
+@section('conteudo')
 
 <div class="wrapper">
 
@@ -32,6 +25,12 @@
 	  <div class="cell">
         Tipo
       </div>
+    <div class="cell">
+      Atualizar
+    </div>
+	  <div class="cell">
+        Deletar
+      </div>
     </div>
 	
 	@foreach($data as $p)
@@ -42,7 +41,16 @@
 		<div class="cell">{{ $p->comprovante }}</div>
 		<div class="cell">{{ $p->situacao }}</div>
 		<div class="cell">{{ $p->despesas->tipos }}</div>
-	
+    <div class="cell">
+      <a type="submit" href="/api/atualiza_formulario/{{$p->id}}">
+        <span class="glyphicon glyphicon-refresh text-success" title="Atualizar registro"></span>
+      </a>
+    </div>
+    <div class="cell">
+      <a type="submit" href="/api/remove/{{$p->id}}">
+        <span class="glyphicon glyphicon-remove text-danger" title="Excluir registro"></span>
+      </a>
+    </div>
 	</div>
   @endforeach
 </div>
@@ -121,5 +129,4 @@
 
 </div>
 
-</body>
-</html>
+@stop

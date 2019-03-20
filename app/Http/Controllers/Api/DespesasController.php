@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use \App\Despesas;
+use \App\Despesa;
 use \App\Api\apiError;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,7 +12,7 @@ class DespesasController extends Controller
    
     private $despesas;
 
-    public function __construct(Despesas $despesas) {
+    public function __construct(Despesa $despesas) {
         $this->despesas = $despesas;
     }
 
@@ -22,13 +22,18 @@ class DespesasController extends Controller
         return response()->json($this->despesas->paginate(10));
     }
     
+    
     //Adicionar um registro novo 
     public function store(Request $request)
     {
-        $despesaData = $request->all();
-        $this->despesas->create($despesaData);
-        
-        return 'Despesa criada com sucesso!';
+        Despesa::create($request->all()); 
+        return redirect('/api/formularioDespesa');
+    }
+
+    //Formulario de cadastro
+    public function formularioCadastro() {
+        $data = $this->despesas->all();
+        return view('formularioDespesa')->with('despesa', Despesa::all());
     }
 
 
@@ -49,8 +54,6 @@ class DespesasController extends Controller
 
         return 'Despesa atualizada com sucesso!';
     }
-
-
 
     public function destroy($id)
     {
