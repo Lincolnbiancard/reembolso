@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::namespace('API')->name('api.')->group(function(){
     
-    Route::resource('/despesas', 'DespesasController');
+    Route::resource('/formulario', 'DespesasController');
 
     Route::get('/formulario', 'FormularioController@formularioCadastro');
     Route::get('/teste', 'FormularioController@teste');
@@ -32,6 +32,6 @@ Route::namespace('API')->name('api.')->group(function(){
     Route::put('/atualiza/{id}', 'FormularioController@update'); 
 
     // Despesas
-    Route::get('/formularioDespesa', 'DespesasController@formularioCadastro');
-    Route::post('/adiciona/Despesa', 'DespesasController@store');
+    Route::resource('/despesas', 'DespesasController');
+   
 });

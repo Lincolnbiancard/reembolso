@@ -19,7 +19,8 @@ class DespesasController extends Controller
 
     public function index()
     {
-        return response()->json($this->despesas->paginate(10));
+        $data = $this->despesas->all();
+        return view('formularioDespesa')->with('despesa', Despesa::all());
     }
     
     
@@ -30,12 +31,6 @@ class DespesasController extends Controller
         Despesa::create($request->all()); 
         return view('formularioDespesa')->with('despesa', Despesa::all());
     }
-
-    //Formulario de cadastro
-    // public function formularioCadastro() {
-    //     $data = $this->despesas->all();
-    //     return view('formularioDespesa')->with('despesa', Despesa::all());
-    // }
 
 
     public function show($id)

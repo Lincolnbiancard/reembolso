@@ -25,8 +25,8 @@ class FormularioController extends Controller
 
     public function index()
     {
-        $data = $this->formulario->all();
-        return view('listagem')->with('data', $data);
+        $data = $this->despesa->all();
+        return view('formulario')->with('despesa', Despesa::all());
     }
 
 
@@ -38,12 +38,6 @@ class FormularioController extends Controller
         return redirect('/api/formulario');
     }
 
-
-    //Formulario de cadastro
-    public function formularioCadastro() {
-        $data = $this->despesa->all();
-        return view('formulario')->with('despesa', Despesa::all());
-    }
 
     //BUSCA FORMULARIO ÚNICO PELO ID
     public function show($id)
