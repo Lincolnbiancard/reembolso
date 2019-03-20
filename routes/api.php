@@ -33,5 +33,5 @@ Route::namespace('API')->name('api.')->group(function(){
 
     // Despesas
     Route::get('/formularioDespesa', 'DespesasController@formularioCadastro');
-    Route::post('/despesa', 'DespesasController@store');
+    Route::post('/adiciona/Despesa', 'DespesasController@store');
 });
