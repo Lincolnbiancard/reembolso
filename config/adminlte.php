@@ -193,7 +193,11 @@ return [
     | Choose what filters you want to include for rendering the menu.
     | You can add your own filters to this array after you've created them.
     | You can comment out the GateFilter if you don't want to use Laravel's
+<<<<<<< HEAD
     | built in Gate functionality 
+=======
+    | built in Gate functionality
+>>>>>>> dev
     |
     */
 

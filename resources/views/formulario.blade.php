@@ -10,7 +10,7 @@
           <tbody>
              <tr>
                 <td colspan="1">
-                   <form class="well form-horizontal" action="adiciona" method="post">
+                   <form class="well form-horizontal" action="formulario" method="post">
                       <fieldset>
                          <div class="form-group">
                             <label class="col-md-4 control-label">Cliente</label>

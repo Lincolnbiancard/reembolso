@@ -31,7 +31,8 @@
 	  <div class="cell">
         Deletar
       </div>
-    </div>
+  </div>
+</div>
 	
 	@foreach($data as $p)
     <div class="row">
@@ -42,12 +43,12 @@
 		<div class="cell">{{ $p->situacao }}</div>
 		<div class="cell">{{ $p->despesas->tipos }}</div>
     <div class="cell">
-      <a type="submit" href="/api/atualiza_formulario/{{$p->id}}">
+      <a type="submit" method="get" href="/api/formulario/{{$p->id}}">
         <span class="glyphicon glyphicon-refresh text-success" title="Atualizar registro"></span>
       </a>
     </div>
     <div class="cell">
-      <a type="submit" href="/api/remove/{{$p->id}}">
+      <a type="submit" method="delete" href="/api/remove/{{$p->id}}">
         <span class="glyphicon glyphicon-remove text-danger" title="Excluir registro"></span>
       </a>
     </div>

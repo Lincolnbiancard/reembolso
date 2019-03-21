@@ -19,20 +19,16 @@ class DespesasController extends Controller
 
     public function index()
     {
-        return response()->json($this->despesas->paginate(10));
+        $data['data'] = $this->despesas->all();
+        return $data;
     }
     
     
     //Adicionar um registro novo 
     public function store(Request $request)
     {
-        Despesa::create($request->all()); 
-        return redirect('/api/formularioDespesa');
-    }
-
-    //Formulario de cadastro
-    public function formularioCadastro() {
         $data = $this->despesas->all();
+        Despesa::create($request->all()); 
         return view('formularioDespesa')->with('despesa', Despesa::all());
     }
 

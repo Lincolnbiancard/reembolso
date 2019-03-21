@@ -9,8 +9,9 @@
           <tbody>
              <tr>
                 <td colspan="1">
-                   <form class="well form-horizontal" action="/api/atualiza/{{ $formulario->id }}" method="POST">
+                   <form class="well form-horizontal" action="/api/formulario/{{ $formulario->id }}" method="POST">
                    <input type="hidden" name="_token" value="<php? csrf_token() ?>">
+                      <input type="hidden" name="_method" value="PUT">
                       <fieldset>
                          <div class="form-group">
                             <label class="col-md-4 control-label">Cliente</label>
@@ -21,7 +22,7 @@
                                  <input id="cliente" name="cliente" placeholder="Nome Cliente" 
                                  class="form-control" required="true" value="{{$formulario->cliente}}" 
                                  type="text"></div>
-                                 <input type="hidden" name="_method" value="PUT">
+                                 
 						  	
                             </div>
                           </div>
