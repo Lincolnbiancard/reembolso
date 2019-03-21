@@ -2,23 +2,36 @@
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Group Auth
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/', function () {
-    return view('reembolso');
+Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function () {
+    Route::get('admin', 'AdminController@index')->name('admin.home');
 });
 
-Route::get('/listagem', 'FormularioController@index');
+Route::get('/', 'SiteController@index')->name('home');
+
+/*
+|--------------------------------------------------------------------------
+|  Routes to user Auth
+|--------------------------------------------------------------------------
+|
+*/
+
+// Route::get('/login', ['uses' => 'Controller@fazerLogin']);
+// Route::post('/login', ['as' => 'user.login', 'uses' => 'DashboardController@auth']);
+
+
+Auth::routes();
+
+//----------------------------------------------------------------------------------------
+
+
+
+// Route::get('/listagem', 'FormularioController@index');
+
+
 
 
