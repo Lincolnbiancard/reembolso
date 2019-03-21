@@ -18,7 +18,6 @@ class FormularioController extends Controller
 
     //CONSTRUTOR
     public function __construct(Formulario $formulario, Despesa $despesa){
-        
         $this->formulario = $formulario;
         $this->despesa = $despesa;
     }
@@ -42,10 +41,11 @@ class FormularioController extends Controller
     //BUSCA FORMULARIO ÚNICO PELO ID
     public function show($id)
     {
-        $formulario = $this->formulario->find($id)->Despesas;
-
-        $data['formulario'] = $formulario; //Var $data recebe o array de formulario
-        return response()->json($data);
+        // $formulario = $this->formulario->find($id)->Despesas;
+        // $data['formulario'] = $formulario; //Var $data recebe o array de formulario
+        $data['formulario'] = Formulario::find($id);
+        $data['despesas'] = Despesa::all();
+        return view('atualizaFormulario', $data);
     }
 
 
@@ -56,17 +56,8 @@ class FormularioController extends Controller
             $formulario = $this->formulario->find($id);
             $formulario->update($formularioData);
 
-        return 'Dados atualizado com sucesso!';
+        return redirect('/api/formulario');
     }
-
-    //Formulario de atualização
-    public function formularioAtualiza($id) {
-        // $data = $this->formulario->find($id); //Trazer a lista de despesas no lookup
-        $data['formulario'] = Formulario::find($id);
-        $data['despesas'] = Despesa::all();
-        return view('atualizaFormulario', $data);
-    }
-
   
     //REMOVER REGISTRO
     public function destroy($id)
@@ -77,9 +68,9 @@ class FormularioController extends Controller
         return redirect('api/listagem'); 
     }
 
-    //teste
-    public function teste()
+    public function listagem()
     {
-        return redirect('teste'); 
+        return view('listagem'); 
     }
+
 }

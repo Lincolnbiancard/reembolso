@@ -6,7 +6,7 @@
           <tbody>
              <tr>
                 <td colspan="1">
-                   <form class="well form-horizontal" action="store" method="post">
+                   <form class="well form-horizontal" action="despesas" method="post">
                       <fieldset>
                          <div class="form-group">
                             <label class="col-md-4 control-label">Despesa</label>

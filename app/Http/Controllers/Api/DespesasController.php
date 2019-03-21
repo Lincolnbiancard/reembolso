@@ -19,8 +19,8 @@ class DespesasController extends Controller
 
     public function index()
     {
-        $data = $this->despesas->all();
-        return view('formularioDespesa')->with('despesa', Despesa::all());
+        $data['data'] = $this->despesas->all();
+        return $data;
     }
     
     
