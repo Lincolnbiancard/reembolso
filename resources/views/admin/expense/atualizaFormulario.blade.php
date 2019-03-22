@@ -9,7 +9,8 @@
           <tbody>
              <tr>
                 <td colspan="1">
-                   <form class="well form-horizontal" action="/api/formulario/{{ $formulario->id }}" method="POST">
+                   <form class="well form-horizontal" 
+                      action="/reembolso/public/admin/update/{{ $formulario->id }}" method="POST">
                    <input type="hidden" name="_token" value="<php? csrf_token() ?>">
                       <input type="hidden" name="_method" value="PUT">
                       <fieldset>
@@ -64,18 +65,12 @@
                               <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group"><span class="input-group-addon">
                                   <i class="glyphicon glyphicon-list"></i></span>
-                                  <select id="despesa" name="despesa" placeholder="Despesa" 
-                                  class="form-control" required="true" type="">
-                                    
-                                  @foreach($despesas as $despesa)
-                                  @if($formulario->id == $despesa->id)
-                                     <option value="{{ $despesa->id }}}" selected>{{ $despesa->tipos }}</option>
-                                       @else
-                                     <option value="{{ $despesa->id }}">{{ $despesa->tipos }}</option>
-                                     @endif
-                                     @endforeach
-                                    
-                                  </select>
+                                  <select id="despesa" name="despesa_id" placeholder="Despesa" 
+                                  class="form-control" required="true" type="text">
+                                  @foreach($despesas as $d)
+                                    <option value="{{$d->id}}">{{$d->tipos}}</option>
+                                  @endforeach 
+                                </select>
                               </div>
                             </div>
                       </fieldset>

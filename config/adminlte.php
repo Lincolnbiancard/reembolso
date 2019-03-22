@@ -33,6 +33,7 @@ return [
     'logo' => '<b>Sistema</b> Reembolso',
 
     'logo_mini' => '<b>SR 1.0</b>',
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -120,6 +121,35 @@ return [
             'icon'        => 'home',
             'label'       => 4,
             'label_color' => 'success',
+        ],
+        [
+            'text'      => 'Financeiro',
+            'icon'      => 'money',
+            'submenu'   => [
+                [
+                    'text'  => 'Despesas',
+                    'url'   => 'admin/expense',
+                    'icon'  => 'money',
+                ],
+                [
+                    'text'      => 'Pedidos',
+                    'icon'      => 'share',
+                    'submenu'   => [
+                        [
+                            'text'  => 'Abertos',
+                            'url'   => 'admin/order',
+                            'icon'  => 'history',
+                        ],
+                        [
+                            'text'  => 'Aprovados',
+                            'url'   => 'admin/approved',
+                            'icon'  => 'history',
+                        ]
+                    ]
+        
+                ]
+            ]
+
         ],
         'ACCOUNT SETTINGS',
         [

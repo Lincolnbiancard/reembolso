@@ -43,12 +43,12 @@
 		<div class="cell">{{ $p->situacao }}</div>
 		<div class="cell">{{ $p->despesas->tipos }}</div>
     <div class="cell">
-      <a type="submit" method="get" href="/api/formulario/{{$p->id}}">
+      <a type="submit" method="get" href="#"> {{-- {{ route('formulario.update/{{$p->id}}') }} --}}
         <span class="glyphicon glyphicon-refresh text-success" title="Atualizar registro"></span>
       </a>
     </div>
     <div class="cell">
-      <a type="submit" method="delete" href="/api/remove/{{$p->id}}">
+      <a type="submit" method="delete" href="#">
         <span class="glyphicon glyphicon-remove text-danger" title="Excluir registro"></span>
       </a>
     </div>

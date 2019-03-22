@@ -1,16 +1,28 @@
-@extends('principal')
+@extends('adminlte::page')
 
+@section('title', 'saldo')
+
+@section('content_header')
+    <h1>Pedido de Reembolso de Despesa</h1>
+
+    <ul class="breadcrumb">
+        <li><a href="">Dashboard</a></li>
+        <li><a href="">Despesa</a></li>
+    </ul>
+@stop
+
+@section('content')
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-@section('conteudo')
 <div class="container">
        <table class="table table-striped">
           <tbody>
              <tr>
                 <td colspan="1">
-                   <form class="well form-horizontal" action="formulario" method="post">
+                   <form class="well form-horizontal" action="{{ route('formulario.store') }}" method="POST">
+                      {!! csrf_field() !!}
                       <fieldset>
                          <div class="form-group">
                             <label class="col-md-4 control-label">Cliente</label>
@@ -36,7 +48,7 @@
                               <label class="col-md-4 control-label">Valor</label>
                               <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group"><span class="input-group-addon">
-                                  <i>R$</i></span>
+                                  <i class="ion ion-cash"></i></span>
                                   <input id="valor" name="valor" placeholder="R$ Valor" 
                                   class="form-control" required="true" value="" type="text"></div>
                               </div>
@@ -58,13 +70,19 @@
                                 <div class="input-group"><span class="input-group-addon">
                                   <i class="glyphicon glyphicon-list"></i></span>
                                   <select id="despesa" name="despesa_id" placeholder="Despesa" 
-                                    class="form-control" required="true" type="arch">
+                                    class="form-control" required="true" type="text">
                                     @foreach($despesa as $d)
                                       <option value="{{$d->id}}">{{$d->tipos}}</option>
-                                    @endforeach
+                                    @endforeach 
                                   </select>
+                                  <input id="user_id" name="user_id" value="{{ auth()->user()->id }}"
+                                         type="hidden">
+                                </div>
+                              </div>
+                                  
                               </div>
                             </div>
+                            @include('admin.includes.alerts')
                       </fieldset>
                       <button type="submit" class="btn btn-primary">Adicionar +</button>
                    </form>
@@ -73,4 +91,6 @@
           </tbody>
        </table>
     </div>
+    </div>
 @stop
+
