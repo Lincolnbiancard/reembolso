@@ -23,8 +23,7 @@
                                  <input id="cliente" name="cliente" placeholder="Nome Cliente" 
                                  class="form-control" required="true" value="{{$formulario->cliente}}" 
                                  type="text"></div>
-                                 
-						  	
+
                             </div>
                           </div>
                             <div class="form-group">

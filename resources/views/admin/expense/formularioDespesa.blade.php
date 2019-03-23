@@ -1,18 +1,30 @@
-@extends('principal')
+@extends('adminlte::page')
 
-@section('conteudo')
+@section('title', 'saldo')
+
+@section('content_header')
+    <h1>Cadastro de Despesas</h1>
+
+    <ul class="breadcrumb">
+        <li><a href="">Dashboard</a></li>
+        <li><a href="">Despesa</a></li>
+    </ul>
+@stop
+
+@section('content')
 <div class="container">
        <table class="table table-striped">
           <tbody>
              <tr>
                 <td colspan="1">
-                   <form class="well form-horizontal" action="despesas" method="post">
+                   <form class="well form-horizontal" action="{{ route('formulario.addDespesa') }}" method="POST">
+                        {!! csrf_field() !!}
                       <fieldset>
                          <div class="form-group">
                             <label class="col-md-4 control-label">Despesa</label>
                             <div class="col-md-8 inputGroupContainer">
                                <div class="input-group"><span class="input-group-addon">
-                                 <i class="glyphicon glyphicon-user"></i></span>
+                                 <i class="glyphicon glyphicon-th-large"></i></span>
                                  <input id="tipos" name="tipos" placeholder="Nome da despesa" 
                                  class="form-control" required="true" value="" type="text">
                                 </div>
@@ -23,7 +35,7 @@
                               <label class="col-md-4 control-label">Descrição da Despesa</label>
                               <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group"><span class="input-group-addon">
-                                  <i class="glyphicon glyphicon-calendar"></i></span>
+                                  <i class="glyphicon glyphicon-th-list"></i></span>
                                   <textarea id="descricao" name="descricao" placeholder="descricao" 
                                   class="form-control" required="true" value="" type="date"></textarea>
                                 </div>

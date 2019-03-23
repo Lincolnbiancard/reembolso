@@ -3,7 +3,7 @@
 @section('title', 'saldo')
 
 @section('content_header')
-    <h1>Acompanhamento de Pedidos de Reembolso</h1>
+    <h1>Acompanhamento de Pedidos de Reembolso Abertos</h1>
 
     <ul class="breadcrumb">
         <li><a href="">Dashboard</a></li>
@@ -43,28 +43,28 @@
                             <td>{{ $p->valor }}</td>
                             <td>{{ $p->comprovante }}</td>
                             <td>{{ $p->situacao }}</td>
-                            <td>{{ $p->despesas->tipos }}</td>
+                            <td>{{ $p->despesas['tipos'] }}</td>
                             <td>
-                                    <a type="submit" method="get" href="show/{{$p->id}}"> 
-                                        <input class="btn btn-success" type="submit" value="Atualizar">
-                                    </a>
+                                <a type="submit" method="get" href="show/{{$p->id}}" 
+                                    class="btn btn-success glyphicon glyphicon-refresh" value="Atualizar"></a>
+                                </a>
                             <td>
                                 <form action="destroy/{{$p->id}}" method="post">
-                                    <input class="btn btn-danger" type="submit" value="Excluir" />
+                                    <input class="btn btn-danger glyphicon glyphicon glyphicon-trash" type="submit" value="Excluir" />
                                     <input type="hidden" name="_method" value="delete" />
                                     {!! csrf_field() !!}
                                 </form>
                             </td>
                             <td>
                                 <form action="approve/{{$p->id}}" method="get">
-                                    <input class="btn btn-success" type="submit" value="Aprovar" />
+                                    <input class="btn btn-success glyphicon glyphicon-ok" type="submit" value="Aprovar" />
                                     <input type="hidden" name="_method" value="put" />
                                     {!! csrf_field() !!}
                                 </form>
                             </td>
                             <td>
                                 <form action="disapprove/{{$p->id}}" method="get">
-                                    <input class="btn btn-danger" type="submit" value="Reprovar" />
+                                    <input class="btn btn-danger glyphicon glyphicon-remove"  type="submit" value="Reprovar"/> 
                                     <input type="hidden" name="_method" value="put" />
                                     {!! csrf_field() !!}
                                 </form>

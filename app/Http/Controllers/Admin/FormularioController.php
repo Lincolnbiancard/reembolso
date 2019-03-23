@@ -33,13 +33,7 @@ class FormularioController extends Controller
         return view('admin.expense.formulario')->with('despesa', Despesa::all());
     }
 
-    //LISTAGEM DE PEDIDOS
-    public function listagem()
-    {
-        return view('admin.expense.listagem')->with('data', Formulario::all()); 
-    }
-
-
+    
     //CRIAR UM NOVO REGISTRO (com histórico)
     public function store(FormValidator $request)
     {
@@ -95,12 +89,12 @@ class FormularioController extends Controller
     //BUSCA FORMULARIO ÚNICO PELO ID
     public function show($id)
     {
-        // $formulario = $this->formulario->find($id)->Despesas;
-        // $data['formulario'] = $formulario; //Var $data recebe o array de formulario
         $data['formulario'] = Formulario::find($id);
         $data['despesas'] = Despesa::all();
         return view('admin.expense.atualizaFormulario', $data);
     }
+
+
 
 
     //ATUALIZA PASSANDO O ID 
@@ -154,22 +148,30 @@ class FormularioController extends Controller
                                     
         }
 
-        //TELA DE PEDIDOS EM ABERTO PARA ANALISE DO GESTOR
+        //LISTAGEM DE PEDIDOS EM ABERTO PARA ANALISE DO GESTOR
         public function order() {
+            dd(auth()->user());
+            if (auth()->user()) {
+
+            }
 
             $historics = $this->formulario
-                                        ->get()->where('situacao', 'Aberto');
+            ->get()
+            ->where('situacao', 'Aberto');
     
             return view('admin.expense.orders')->with('data', $historics); 
         }
 
-        //TELA DE PEDIDOS EM APROVADOS
+
+        //LISTAGEM DE PEDIDOS EM APROVADOS
         public function approved() {
 
-            $historics = $this->formulario
-                                        ->get()->where('situacao', 'Aprovado');
+            $data = $this->formulario
+                                    ->all()
+                                        ->where('situacao', 'Aprovado');
+                                        
     
-            return view('admin.expense.approved')->with('data', $historics); 
+            return view('admin.expense.approved')->with('data', $data); 
         }
 
     

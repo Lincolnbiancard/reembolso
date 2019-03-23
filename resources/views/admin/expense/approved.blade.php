@@ -3,7 +3,7 @@
 @section('title', 'saldo')
 
 @section('content_header')
-    <h1>Acompanhamento de Pedidos de Reembolso</h1>
+    <h1>Acompanhamento de Pedidos de Reembolso Aprovados</h1>
 
     <ul class="breadcrumb">
         <li><a href="">Dashboard</a></li>
@@ -34,21 +34,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                            @foreach($data as $p)
+                            @foreach($data as $pedido)
                             <tr>
-                            <td>{{ $p->cliente }}</td>
-                            <td>{{ $p->data }}</td>
-                            <td>{{ $p->valor }}</td>
-                            <td>{{ $p->comprovante }}</td>
-                            <td>{{ $p->situacao }}</td>
-                            <td>{{ $p->despesas->tipos }}</td>
+                            <td>{{ $pedido->cliente }}</td>
+                            <td>{{ $pedido->data }}</td>
+                            <td>{{ $pedido->valor }}</td>
+                            <td>{{ $pedido->comprovante }}</td>
+                            <td>{{ $pedido->situacao }}</td>
+                            <td>{{ $pedido->despesas['tipos'] }}</td>
                             <td>
-                                <a type="submit" method="get" href="show/{{$p->id}}"> 
+                                <a type="submit" method="get" href="show/{{$pedido->id}}"> 
                                     <input class="btn btn-success" type="submit" value="Atualizar">
                                 </a>
                             </td>
                             <td>
-                                <form action="destroy/{{$p->id}}" method="post">
+                                <form action="destroy/{{$pedido->id}}" method="post">
                                     <input class="btn btn-danger" type="submit" value="Excluir" />
                                     <input type="hidden" name="_method" value="delete" />
                                     {!! csrf_field() !!}

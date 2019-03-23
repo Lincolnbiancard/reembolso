@@ -14,13 +14,13 @@
 @section('content')
     <div class="box">
         {{-- BTN Form register --}}
-        <a href="{{ route('admin.formulario') }}" class="btn btn-primary glyphicon glyphicon-plus" 
-            alt="Novo Pedido de Despesa"></a>
+        <a href="{{ route('admin.formulario') }}" class="btn btn-primary"
+            alt="Novo Pedido de Despesa">Novo Pedido +</a>
         {{-- BTN Form Update --}}
-        <a href="{{ route('admin.formulario') }}" class="btn btn-success glyphicon glyphicon-refresh" 
-            alt="Atualiza Pedido de Depesa"></a>
+        <a href="{{ route('admin.formularioDespesa') }}" class="btn btn-success" 
+            alt="Nova Depesa">Nova Depesa +</a>
         {{-- BTN list pedidos --}}
-        <a href="{{ route('admin.listagem') }}" class="glyphicon glyphicon-list-alt btn btn-danger"></a>
+        <a href="{{ route('admin.listExpense') }}" class="glyphicon glyphicon-list-alt btn btn-danger"></a>
 
         <div class="box-header">
             @include('admin.includes.alerts')
