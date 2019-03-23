@@ -49,8 +49,8 @@ class DespesaController extends Controller
 
     public function show($id)
     {
-        $data = $this->despesas->find($id);
-        return view('admin.expense.updateDespesa', $data);
+        $despesa['despesa'] = Despesa::find($id);
+        return view('admin.expense.updateDespesa', $despesa);
     }
 
 

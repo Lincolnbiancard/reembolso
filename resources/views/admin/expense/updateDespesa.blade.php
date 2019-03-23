@@ -18,7 +18,7 @@
              <tr>
                 <td colspan="1">
                    <form class="well form-horizontal" 
-                      action="/reembolso/public/admin/update/{{ $despesa->id }}" method="POST">
+                      action="/reembolso/public/admin/update/despesa/{{ $despesa->id }}" method="POST">
                    <input type="hidden" name="_token" value="<php? csrf_token() ?>">
                       <input type="hidden" name="_method" value="PUT">
                       <fieldset>
@@ -29,24 +29,24 @@
                                  @csrf
                                  <i class="glyphicon glyphicon-th-large"></i></span>
                                  <input id="tipos" name="tipos" placeholder="Nome Cliente" 
-                                 class="form-control" required="true" value="{{dd($despesa)}}" 
+                                 class="form-control" required="true" value="{{ $despesa->tipos }}" 
                                  type="text">
                                 </div>
                             </div>
                          </div>
                                  
                          <div class="form-group">
-                                <label class="col-md-4 control-label">Descrição</label>
-                                <div class="col-md-8 inputGroupContainer">
-                                   <div class="input-group"><span class="input-group-addon">
-                                     @csrf
-                                     <i class="glyphicon glyphicon-th-list"></i></span>
-                                     <textarea id="descricao" name="descricao" placeholder="Nome Cliente" 
-                                     class="form-control" required="true" value="{{$despesa->descricao}}" 
-                                     type="text"></textarea>
-                                    </div>
-                                </div>
-                            </div>
+                           <label class="col-md-4 control-label">Despesa</label>
+                           <div class="col-md-8 inputGroupContainer">
+                              <div class="input-group"><span class="input-group-addon">
+                                @csrf
+                                <i class="glyphicon glyphicon-th-list"></i></span>
+                                <input id="descricao" name="descricao" 
+                                class="form-control" required="true" value="{{ $despesa->descricao }}" 
+                                type="text">
+                               </div>
+                           </div>
+                        </div>
                       </fieldset>
                       <button type="submit" class="btn btn-primary">Atualizar</button>
                    </form>

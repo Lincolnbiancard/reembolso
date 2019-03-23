@@ -32,7 +32,7 @@
                             <td>{{ $despesa->tipos }}</td>
                             <td>{{ $despesa->descricao }}</td>
                             <td>
-                                <a type="submit" method="get" href="show/{{$despesa->id}}" 
+                                <a type="submit" method="get" href="show/despesa/{{$despesa->id}}" 
                                     class="btn btn-success glyphicon glyphicon-refresh" value="Atualizar"></a>
                                 </a>
                             <td>
