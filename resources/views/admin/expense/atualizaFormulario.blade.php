@@ -1,9 +1,17 @@
-@extends('principal')
+@extends('adminlte::page')
 
-@section('conteudo')
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<!------ Include the above in your HEAD tag ---------->
+@section('title', 'saldo')
 
+@section('content_header')
+    <h1>Pedido de Reembolso de Despesa</h1>
+
+    <ul class="breadcrumb">
+        <li><a href="">Dashboard</a></li>
+        <li><a href="">Despesa</a></li>
+    </ul>
+@stop
+
+@section('content')
 <div class="container">
        <table class="table table-striped">
           <tbody>
@@ -64,11 +72,15 @@
                               <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group"><span class="input-group-addon">
                                   <i class="glyphicon glyphicon-list"></i></span>
-                                  <select id="despesa" name="despesa_id" placeholder="Despesa" 
-                                  class="form-control" required="true" type="text">
+                                  <select id="despesa" name="despesa_id[]" placeholder="Despesa" 
+                                  class="form-control" required="true" multiple="multiple">
                                   @foreach($despesas as $d)
-                                    <option value="{{$d->id}}">{{$d->tipos}}</option>
-                                  @endforeach 
+                                    <option value="{{$d->id}}" 
+                                        {{(gettype($formulario->despesa_id) == 'array' &&
+                                          in_array($d->id, $formulario->despesa_id)) ||
+                                            $d->id == $formulario->despesa_id ? 'selected' : ''}}>{{$d->tipos}}
+                                    </option>
+                                  @endforeach                                  
                                 </select>
                               </div>
                             </div>
@@ -79,7 +91,12 @@
              </tr>
           </tbody>
        </table>
-    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    @stop
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script>
+  $("#despesa").select2()
+</script>
+@stop

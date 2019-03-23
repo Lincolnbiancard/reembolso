@@ -15,8 +15,8 @@ class CriarTabelaFormularios extends Migration
             $table->string('valor');
             $table->string('comprovante');
             $table->string('situacao')->default('Aberto');    
-            $table->integer('despesa_id')->default(1)->unsigned(); //Adicionando a coluna na tabela para relacionamento com despesas
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('despesa_id');
+            $table->unsignedBigInteger('user_id');
         });
     }
 

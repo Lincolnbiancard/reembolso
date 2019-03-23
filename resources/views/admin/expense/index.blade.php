@@ -27,17 +27,19 @@
         </div>
 
         <div class="box-body">
-            <div class="small-box bg-green">
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>{{ $userLogado }}</sup></h3>
+                        <h3><sup style="font-size: 20px">{{ $pedidos }}</sup></h3>
         
-                        <p>Despesas Cadastradas</p>
+                        <p>Pedidos Pendentes</p>
+                    
                     </div>
                     <div class="icon">
                         <i class="ion ion-cash"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Histórico <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="{{ route('admin.order') }}" class="small-box-footer">Histórico <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
             </div>
         </div>
-    </div>
 @stop

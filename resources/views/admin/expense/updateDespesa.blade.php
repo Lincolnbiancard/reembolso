@@ -12,7 +12,6 @@
 @stop
 
 @section('content')
-
 <div class="container">
        <table class="table table-striped">
           <tbody>
@@ -30,7 +29,7 @@
                                  @csrf
                                  <i class="glyphicon glyphicon-th-large"></i></span>
                                  <input id="tipos" name="tipos" placeholder="Nome Cliente" 
-                                 class="form-control" required="true" value="{{$despesa->tipos}}" 
+                                 class="form-control" required="true" value="{{dd($despesa)}}" 
                                  type="text">
                                 </div>
                             </div>

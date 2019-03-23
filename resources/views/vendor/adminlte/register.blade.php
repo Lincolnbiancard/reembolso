@@ -58,6 +58,9 @@
                         </span>
                     @endif
                 </div>
+                <div>
+                    <input type="hidden" name="group" id="group" value="user" type="text"">
+                    <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                 <button type="submit"
                         class="btn btn-primary btn-block btn-flat"
                 >{{ trans('adminlte::adminlte.register') }}</button>

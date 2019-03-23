@@ -12,9 +12,11 @@
 @stop
 
 @section('content')
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 <div class="container">
        <table class="table table-striped">
@@ -69,8 +71,8 @@
                               <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group"><span class="input-group-addon">
                                   <i class="glyphicon glyphicon-list"></i></span>
-                                  <select id="despesa" name="despesa_id" placeholder="Despesa" 
-                                    class="form-control" required="true" type="text">
+                                  <select id="despesa" name="despesa_id[]" placeholder="Despesa" 
+                                    class="form-control" required="true" multiple="multiple">
                                     @foreach($despesa as $d)
                                       <option value="{{$d->id}}">{{$d->tipos}}</option>
                                     @endforeach 
@@ -92,5 +94,7 @@
        </table>
     </div>
     </div>
+
+  <script src="{{ asset('js/scripts.js') }}"></script>
 @stop
 

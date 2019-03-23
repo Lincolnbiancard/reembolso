@@ -11,6 +11,7 @@ class CriarTabelaDespesas extends Migration
         Schema::create('despesas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('tipos');
+            $table->string('descricao');
         });
     }
 

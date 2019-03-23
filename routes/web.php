@@ -7,10 +7,14 @@
 |
 */
 
+
 Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
     
-    
-    Route::get('/', 'SiteController@index')->name('home');
+    Route::get('home', 'ExpenseController@home')->name('admin.home');
+
+    Route::get('/', function() {
+        return redirect('/admin/home');
+    });
 
     //------------------------------Route Init ---------------------------------
                                                                 
@@ -85,7 +89,7 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'adm
 
     //Routes Update Despesas
     Route::put('update/{id}', 'DespesaController@update');
-    Route::get('show/{id}', 'DespesaController@show')->name('admin.show');
+    Route::get('show/despesa/{id}', 'DespesaController@show')->name('admin.show');
 });
 
 
@@ -102,8 +106,13 @@ Auth::routes();
 
 //----------------------------------------------------------------------------------------
 
+Route::get('/home', function() {
+    return redirect('/login');
+})->name('login');
 
-
+Route::get('/', function() {
+    return redirect('/login');
+})->name('login');
 
 
 

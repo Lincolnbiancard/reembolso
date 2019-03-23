@@ -35,11 +35,11 @@ class FormularioController extends Controller
 
     
     //CRIAR UM NOVO REGISTRO (com histórico)
-    public function store(FormValidator $request)
+    public function store(Request $request)
     {
 
         DB::beginTransaction();
-
+        
         $data = $request->all();
 
         $form = Formulario::create($data); 
@@ -150,21 +150,53 @@ class FormularioController extends Controller
 
         //LISTAGEM DE PEDIDOS EM ABERTO PARA ANALISE DO GESTOR
         public function order() {
-            dd(auth()->user());
-            if (auth()->user()) {
+            
+            if (auth()->user()->group != 'admin') {
 
-            }
+                $response = [
+                    'error' => true,
+                    'message' => 'Seu usuário não tem permissões para acessar está tela.'
+                ];
+
+                return redirect('/admin/expense')->with('error', $response['message']);
+            } //  REGRA DE ACORDO COM USUARIO
 
             $historics = $this->formulario
             ->get()
             ->where('situacao', 'Aberto');
-    
-            return view('admin.expense.orders')->with('data', $historics); 
+            
+            $despesasNomes = [];
+            foreach ($historics as $h) {
+                $despesasNomes[$h->id] = [];
+                if (gettype($h->despesa_id) == 'array') {
+                    foreach ($h->despesa_id as $despesa) {
+                        array_push($despesasNomes[$h->id], Despesa::find($despesa));
+                    }
+                } else {
+                    array_push($despesasNomes[$h->id], Despesa::find($h->despesa_id));
+                }
+                
+            }
+            
+            $result['data'] = $historics;
+            $result['despesasNomes'] = $despesasNomes;
+
+            return view('admin.expense.orders', $result); 
         }
 
 
         //LISTAGEM DE PEDIDOS EM APROVADOS
         public function approved() {
+
+            if (auth()->user()->group != 'admin') {
+
+                $response = [
+                    'error' => true,
+                    'message' => 'Seu usuário não tem permissões para acessar está tela.'
+                ];
+
+                return redirect('/admin/expense')->with('error', $response['message']);
+            } //  REGRA DE ACORDO COM USUARIO
 
             $data = $this->formulario
                                     ->all()

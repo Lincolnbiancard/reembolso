@@ -29,7 +29,7 @@
                             <i class="fa fa-bars"></i>
                         </button>
                     </div>
-
+                    
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                         <ul class="nav navbar-nav">
@@ -51,7 +51,7 @@
                 <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">{{ trans('adminlte::adminlte.toggle_navigation') }}</span>
-                </a>
+                </a> 
             @endif
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
@@ -62,10 +62,11 @@
                                 <a href="{{ url(config('adminlte.logout_url', 'auth/logout')) }}">
                                     <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
                                 </a>
+                                
                             @else
-                                <a href="#"
+                                <a href="#" 
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                >
+                                >Logado com:{{ (auth()->user()->name) }}
                                     <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
                                 </a>
                                 <form id="logout-form" action="{{ url(config('adminlte.logout_url', 'auth/logout')) }}" method="POST" style="display: none;">
@@ -90,7 +91,6 @@
 
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
-
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu" data-widget="tree">
                     @each('adminlte::partials.menu-item', $adminlte->menu(), 'item')

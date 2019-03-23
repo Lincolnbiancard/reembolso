@@ -10,11 +10,14 @@ use \App\Despesa;
 class ExpenseController extends Controller
 {
     public function index() {
-        $expense = json_decode(auth()->user()->expense);//Tudo sobre o usuário logado
-        $result = count($expense); 
-        $userLogado = $result ? $result : 'sem user';
 
-        return view('admin.expense.index', compact('userLogado'));
+        $formulario = Formulario::all()
+            ->where('situacao', 'Aberto'); //Pedidos em aberto 
+        $result = count($formulario);
+     
+        $pedidos = $result ? $result : 'sem valor';
+
+        return view('admin.expense.index', compact('pedidos'));
     }
 
     public function order() {
@@ -26,5 +29,9 @@ class ExpenseController extends Controller
                                     ;
 
         return view('admin.expense.orders')->with('data', Formulario::all()); 
+    }
+
+    public function home() {
+        return view('admin.home');
     }
 }

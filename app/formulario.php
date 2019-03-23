@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Formulario extends Model
 {
     protected $table = 'formularios';
+    protected $casts = [
+        'despesa_id' => 'array',
+    ];
     // //Evita do eloquent inserir os campos (`updated_at`, `created_at`) por default
      public $timestamps = false; 
 
@@ -15,7 +18,7 @@ class Formulario extends Model
     ];
 
     public function despesas()
-    {
+    {        
         return $this->belongsTo('App\Despesa', 'despesa_id', 'id');
     }
 
@@ -23,5 +26,4 @@ class Formulario extends Model
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
-    
 }
