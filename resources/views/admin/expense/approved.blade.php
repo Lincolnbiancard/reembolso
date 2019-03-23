@@ -41,7 +41,14 @@
                             <td>{{ $pedido->valor }}</td>
                             <td>{{ $pedido->comprovante }}</td>
                             <td>{{ $pedido->situacao }}</td>
-                            <td>{{ $pedido->despesas['tipos'] }}</td>
+                            <td>
+                                    @foreach ($despesasNomes[$pedido->id] as $despesa)
+                                        {{ $despesa->tipos }}
+                                        @if(!$loop->last)
+                                            ,
+                                        @endif
+                                    @endforeach
+                            </td>
                             <td>
                                 <a type="submit" method="get" href="show/{{$pedido->id}}"> 
                                     <input class="btn btn-success" type="submit" value="Atualizar">

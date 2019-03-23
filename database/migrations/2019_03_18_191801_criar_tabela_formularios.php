@@ -13,10 +13,9 @@ class CriarTabelaFormularios extends Migration
             $table->string('cliente');
             $table->timestamp('data');
             $table->string('valor');
-            $table->string('comprovante');
             $table->string('situacao')->default('Aberto');    
-            $table->unsignedBigInteger('despesa_id');
-            $table->unsignedBigInteger('user_id');
+            $table->string('despesa_id');
+            $table->unsignedBigInteger('user_id')->default(1);
         });
     }
 

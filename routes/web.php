@@ -7,21 +7,18 @@
 |
 */
 
-
 Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
     
     Route::get('home', 'ExpenseController@home')->name('admin.home');
 
-    Route::get('/', function() {
-        return redirect('/admin/home');
-    });
-
+    
     //------------------------------Route Init ---------------------------------
                                                                 
      Route::get('expense', 'ExpenseController@index')->name('admin.expense');
     
     //--------------------------------------------------------------------------
     
+
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +31,6 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'adm
 
      Route::get('order', 'FormularioController@order')->name('admin.order');
 
-    //---------------------------------------------------------------------------
 
 
     //------------------------------Route Pedidos Aprovados -----------------------
@@ -90,21 +86,25 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'adm
     //Routes Update Despesas
     Route::put('update/{id}', 'DespesaController@update');
     Route::get('show/despesa/{id}', 'DespesaController@show')->name('admin.show');
+
+
+
+
+
+
+
+
+
+
+    Route::get('/', function() {
+        return redirect('/admin/home');
+    });
+
 });
 
 
 
-/*
-|--------------------------------------------------------------------------
-|  Routes to user Auth
-|---------------------------------------------------------------------------
-|
-*/
-
-
-Auth::routes();
-
-//----------------------------------------------------------------------------------------
+//--------------------------------- Redirects ---------------------------------------------------
 
 Route::get('/home', function() {
     return redirect('/login');

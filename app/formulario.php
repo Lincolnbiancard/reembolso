@@ -14,7 +14,7 @@ class Formulario extends Model
      public $timestamps = false; 
 
     protected $fillable = [ //Atributos que podem ser preenchidos por formulario
-        'id', 'cliente', 'valor', 'motivo', 'comprovante', 'despesa_id', 'user_id'
+        'id', 'cliente', 'valor', 'motivo', 'despesa_id', 'user_id'
     ];
 
     public function despesas()

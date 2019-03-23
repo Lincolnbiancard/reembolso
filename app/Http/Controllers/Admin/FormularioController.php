@@ -185,7 +185,7 @@ class FormularioController extends Controller
         }
 
 
-        //LISTAGEM DE PEDIDOS EM APROVADOS
+        //LISTAGEM DE PEDIDOS APROVADOS
         public function approved() {
 
             if (auth()->user()->group != 'admin') {
@@ -198,12 +198,28 @@ class FormularioController extends Controller
                 return redirect('/admin/expense')->with('error', $response['message']);
             } //  REGRA DE ACORDO COM USUARIO
 
-            $data = $this->formulario
-                                    ->all()
-                                        ->where('situacao', 'Aprovado');
+            $historics = $this->formulario
+            ->get()
+            ->where('situacao', 'Aprovado');
+            
+            $despesasNomes = [];
+            foreach ($historics as $h) {
+                $despesasNomes[$h->id] = [];
+                if (gettype($h->despesa_id) == 'array') {
+                    foreach ($h->despesa_id as $despesa) {
+                        array_push($despesasNomes[$h->id], Despesa::find($despesa));
+                    }
+                } else {
+                    array_push($despesasNomes[$h->id], Despesa::find($h->despesa_id));
+                }
+                
+            }
+            
+            $result['data'] = $historics;
+            $result['despesasNomes'] = $despesasNomes;
                                         
     
-            return view('admin.expense.approved')->with('data', $data); 
+            return view('admin.expense.approved', $result); 
         }
 
     

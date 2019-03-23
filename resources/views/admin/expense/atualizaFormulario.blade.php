@@ -57,17 +57,6 @@
                             </div>
 
                             <div class="form-group">
-                              <label class="col-md-4 control-label">Comprovante</label>
-                              <div class="col-md-8 inputGroupContainer">
-                                <div class="input-group"><span class="input-group-addon">
-                                  <i class="glyphicon glyphicon-cloud-upload"></i></span>
-                                  <input id="comprovante" name="comprovante" placeholder="Comprovante" 
-                                  class="form-control" required="true" value="{{$formulario->comprovante}}" 
-                                  type=""></div>
-                              </div>
-                            </div>
-
-                            <div class="form-group">
                               <label class="col-md-4 control-label">Despesa</label>
                               <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group"><span class="input-group-addon">
