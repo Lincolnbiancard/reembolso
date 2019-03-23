@@ -16,9 +16,11 @@ class DespesaController extends Controller
 {
    
     private $despesas;
+    private $formulario;
 
-    public function __construct(Despesa $despesas) {
+    public function __construct(Despesa $despesas, Formulario $formulario) {
         $this->despesas = $despesas;
+        $this->formulario = $formulario;
     }
 
 
@@ -67,6 +69,13 @@ class DespesaController extends Controller
     {
         $despesa = $this->despesas->find($id);
         $despesa->delete();
+
+        $formularios = $this->formulario->whereRaw('despesa_id LIKE "%' .  $id . '%"')->get();
+
+        foreach ($formularios as $form) {
+            $form->despesa_id = array_diff($form->despesa_id, [$id]);
+            $form->save();
+        }
 
         return redirect('admin/listExpense'); 
     }

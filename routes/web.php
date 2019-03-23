@@ -45,8 +45,10 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'adm
     Route::get('approve/{id}', 'FormularioController@approve')->name('admin.approve');
     Route::get('disapprove/{id}', 'FormularioController@disapprove')->name('admin.disapprove');
  
-    //Route Delete Pedido 
-    Route::delete('destroy/{id}', 'FormularioController@destroy');
+    Route::prefix('formulario')->group(function () {
+        //Route Delete Pedido 
+        Route::delete('destroy/{id}', 'FormularioController@destroy');
+    });
     
     /*
     |
@@ -64,8 +66,10 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'adm
      Route::get('listExpense', 'DespesaController@index')->name('admin.listExpense');
 
 
-    //Route Delete Despesas 
-    Route::delete('destroy/{id}', 'DespesaController@destroy');
+    Route::prefix('despesa')->group(function () {
+        //Route Delete Despesas 
+        Route::delete('destroy/{id}', 'DespesaController@destroy');
+    });
 
 
     //Routes Update Despesas

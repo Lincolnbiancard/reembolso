@@ -54,7 +54,7 @@
                                     class="btn btn-success glyphicon glyphicon-refresh" value="Atualizar"></a>
                                 </a>
                             <td>
-                                <form action="destroy/{{$p->id}}" method="post">
+                                <form action="formulario/destroy/{{$p->id}}" method="post">
                                     <input class="btn btn-danger glyphicon glyphicon glyphicon-trash" type="submit" value="Excluir" />
                                     <input type="hidden" name="_method" value="delete" />
                                     {!! csrf_field() !!}

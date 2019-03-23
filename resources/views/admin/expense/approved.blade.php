@@ -53,7 +53,7 @@
                                 </a>
                             </td>
                             <td>
-                                <form action="destroy/{{$pedido->id}}" method="post">
+                                <form action="formulario/destroy/{{$pedido->id}}" method="post">
                                     <input class="btn btn-danger" type="submit" value="Excluir" />
                                     <input type="hidden" name="_method" value="delete" />
                                     {!! csrf_field() !!}
