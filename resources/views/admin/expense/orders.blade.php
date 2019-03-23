@@ -26,7 +26,6 @@
                             <th>Cliente</th>
                             <th>Data</th>
                             <th>Valor</th>
-                            <th>Comprovante</th>
                             <th>Situação</th>
                             <th>Tipo Reembolso</th>
                             <th>Atualizar</th>
@@ -41,7 +40,6 @@
                             <td>{{ $p->cliente }}</td>
                             <td>{{ $p->data }}</td>
                             <td>{{ $p->valor }}</td>
-                            <td>{{ $p->comprovante }}</td>
                             <td>{{ $p->situacao }}</td>
                             <td>
                                 @foreach ($despesasNomes[$p->id] as $despesa)

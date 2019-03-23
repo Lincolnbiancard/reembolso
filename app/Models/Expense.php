@@ -15,7 +15,6 @@ class Expense extends Model
             'type'          => 'I',
             'cliente'       => $client,
             'valor'         => $value,
-            'comprovante'   => $receipt,
             'date'          => date('Ymd')
          ]);
     }

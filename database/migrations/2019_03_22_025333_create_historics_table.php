@@ -16,7 +16,6 @@ class CreateHistoricsTable extends Migration
             $table->enum('type', ['I', 'O', 'T']);
             $table->string('cliente');
             $table->double('valor', 10, 2);
-            $table->string('comprovante');
             $table->date('date');
             $table->timestamps();
         });

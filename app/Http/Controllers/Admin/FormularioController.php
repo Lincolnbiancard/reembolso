@@ -49,7 +49,6 @@ class FormularioController extends Controller
             'type'          => 'I',
             'cliente'       => $request->cliente, 
             'valor'         => $request->valor,
-            'comprovante'   => $request->comprovante,
             'date'          => date('Ymd'),
             'user_id'       => $request->user_id,
         ]);

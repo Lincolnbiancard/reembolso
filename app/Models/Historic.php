@@ -6,5 +6,5 @@ use App\User;
 
 class Historic extends Model
 {
-    protected $fillable = ['type', 'cliente', 'valor', 'comprovante', 'user_id', 'date'];
+    protected $fillable = ['type', 'cliente', 'valor', 'user_id', 'date'];
 }
